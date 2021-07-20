@@ -1,0 +1,1 @@
+-I/home/abir/code/stm32/libs_blink/libs_iskra/inc
