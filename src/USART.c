@@ -55,3 +55,29 @@ void USART_send_word(const struct USART *usart, Word data)
 	}
 	USART_send_str(usart, buff + pos + (pos != 9));
 }
+
+void USART_send_byte_bin(const struct USART *usart, Byte data)
+{
+	char buff[9];
+	buff[8] = 0;
+	for(int i = 7; i >= 0; i--)
+	{
+		buff[i] = (data & 1) + '0';
+		data >>= 1;
+	}
+	USART_send_str(usart, buff);
+}
+
+void USART_send_byte_hex(const struct USART *usart, Byte data)
+{
+	char buff[3];
+	buff[2] = 0;
+	for(int i = 0; i < 2; i++)
+	{
+		Byte tmp = data & 0xf;
+		tmp += (tmp > 9) ? 'A' - 10 : '0';
+		buff[1 - i] = tmp;
+		data >>= 4;
+	}
+	USART_send_str(usart, buff);
+}

@@ -36,3 +36,5 @@ void USART_enable(const struct USART *usart, bool state);
 void USART_config(const struct USART *usart, struct USART_Config cfg);
 void USART_send_str(const struct USART *usart, const char *data);
 void USART_send_word(const struct USART *usart, Word data);
+void USART_send_byte_bin(const struct USART *usart, Byte data);
+void USART_send_byte_hex(const struct USART *usart, Byte data);

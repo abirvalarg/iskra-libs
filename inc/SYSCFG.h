@@ -12,3 +12,4 @@ struct SYSCFG
 extern struct SYSCFG SYSCFG_BASE;
 
 void SYSCFG_enable(bool state);
+void SYSCFG_comp_cell(bool state);

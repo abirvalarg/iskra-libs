@@ -44,3 +44,4 @@ void GPIO_Pin_pull(const struct GPIO_Pin *pin, enum GPIO_PinPull mode);
 void GPIO_Pin_write(const struct GPIO_Pin *pin, bool val);
 bool GPIO_Pin_read(const struct GPIO_Pin *pin);
 void GPIO_Pin_set_alt(const struct GPIO_Pin *pin, Byte alt);
+void GPIO_Pin_speed(const struct GPIO_Pin *pin, Byte speed);

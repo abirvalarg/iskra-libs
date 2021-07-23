@@ -84,3 +84,11 @@ void GPIO_Pin_set_alt(const struct GPIO_Pin *pin, Byte alt)
 	tmp |= (alt & 0b1111) << ((pin->pin & 0b111) * 4);
 	*reg = tmp;
 }
+
+void GPIO_Pin_speed(const struct GPIO_Pin *pin, Byte speed)
+{
+	Word tmp = pin->hw->regs->OSPEEDR;
+	tmp &= ~(0b11 << (pin->pin * 2));
+	tmp |= (speed & 0b11) << (pin->pin * 2);
+	pin->hw->regs->OSPEEDR = tmp;
+}

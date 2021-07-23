@@ -1,5 +1,7 @@
 #include "timer.h"
 #include "RCC.h"
+#include <GPIO.h>
+#include <pins.h>
 
 static void tim_bas_set_psc(void *hw, Word psc);
 static void tim_bas_set_arr(void *hw, Word arr);
@@ -122,6 +124,14 @@ TimerHandler Timer_on_update(const struct Timer *tm, TimerHandler func)
 	return old_func;
 }
 
+void Timer_await(const struct Timer *tm)
+{
+	GPIO_Pin_write(&LED2, true);
+	Timer_start(tm);
+	while(!Timer_reset_int(tm));
+	GPIO_Pin_write(&LED2, false);
+}
+
 static void tim_bas_set_psc(void *_hw, Word psc)
 {
 	struct BasicTimerReg *hw = _hw;
@@ -160,7 +170,8 @@ static bool tim_bas_reset(void *_hw)
 {
 	struct BasicTimerReg *hw = _hw;
 	bool res = hw->SR;
-	hw->SR = 0;
+	if(res)
+		hw->SR = 0;
 	return res;
 }
 

@@ -105,3 +105,5 @@ void Timer_trigger(const struct Timer *tm);
  * @return pointer to previous handler
  */
 TimerHandler Timer_on_update(const struct Timer *tm, TimerHandler func);
+
+void Timer_await(const struct Timer *tm);
