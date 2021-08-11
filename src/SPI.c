@@ -26,5 +26,7 @@ HalfWord SPI_exchange(const struct SPI *spi, HalfWord tx)
 	while(!(spi->hw->SR & BIT(1)));
 	spi->hw->DR = tx;
 	while(!(spi->hw->SR & BIT(0)));
+	for(int i = 0; i < 150; i++)
+		asm("nop");
 	return spi->hw->DR;
 }

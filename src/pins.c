@@ -66,6 +66,16 @@ const struct GPIO_Pin P9 = {
 	.pin = 7
 };
 
+const struct GPIO_Pin A0 = {
+	.hw = &GPIOA,
+	.pin = 0
+};
+
+const struct GPIO_Pin A1 = {
+	.hw = &GPIOA,
+	.pin = 1
+};
+
 const struct GPIO_Pin A4 = {
 	.hw = &GPIOA,
 	.pin = 4
